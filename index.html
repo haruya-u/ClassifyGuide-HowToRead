@@ -19,25 +19,14 @@
     color: #f5f4f0;
     padding: 20px 24px 16px;
   }
-
-  header h1 {
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-  }
-
-  header p {
-    font-size: 12px;
-    color: #aaa;
-    margin-top: 4px;
-  }
+  header h1 { font-size: 18px; font-weight: 700; letter-spacing: 0.04em; }
+  header p  { font-size: 12px; color: #aaa; margin-top: 4px; }
 
   .tabs {
     display: flex;
     background: #1e1e1e;
     border-bottom: 1px solid #333;
   }
-
   .tab-btn {
     flex: 1;
     padding: 10px 4px;
@@ -47,34 +36,44 @@
     border: none;
     cursor: pointer;
     letter-spacing: 0.02em;
-    transition: color 0.2s, border-bottom 0.2s;
     border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-bottom 0.2s;
   }
-
-  .tab-btn.active {
-    color: #f5f4f0;
-    border-bottom: 3px solid #e8c84a;
-  }
-
+  .tab-btn.active { color: #f5f4f0; border-bottom: 3px solid #e8c84a; }
   .tab-content { display: none; }
   .tab-content.active { display: block; }
 
-  /* === FLOW TAB === */
+  /* ===== FLOW TAB ===== */
   .flow-container {
-    padding: 24px 16px 40px;
+    padding: 24px 16px 48px;
     max-width: 560px;
     margin: 0 auto;
   }
 
   .flow-intro {
     font-size: 13px;
-    color: #666;
+    color: #555;
     margin-bottom: 20px;
-    line-height: 1.6;
+    line-height: 1.65;
     background: #fff;
     border-left: 3px solid #e8c84a;
     padding: 10px 14px;
     border-radius: 0 6px 6px 0;
+  }
+
+  .progress-dots { display: flex; gap: 6px; margin-bottom: 18px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #ddd; transition: background 0.2s; }
+  .dot.done   { background: #e8c84a; }
+  .dot.active { background: #2c2c2c; }
+
+  .trail { margin-bottom: 16px; }
+  .trail-item {
+    font-size: 12px; color: #aaa; margin-bottom: 4px;
+    display: flex; gap: 6px; align-items: flex-start;
+  }
+  .trail-item::before {
+    content: '✓'; color: #e8c84a;
+    flex-shrink: 0; font-size: 11px; margin-top: 1px;
   }
 
   .question-card {
@@ -84,60 +83,24 @@
     margin-bottom: 16px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   }
-
   .question-label {
-    font-size: 11px;
-    font-weight: 700;
-    color: #e8c84a;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 8px;
+    font-size: 11px; font-weight: 700; color: #e8c84a;
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;
   }
+  .question-text { font-size: 16px; font-weight: 600; line-height: 1.5; color: #1a1a1a; }
+  .question-hint { font-size: 12px; font-weight: 400; color: #999; margin-top: 6px; line-height: 1.5; }
 
-  .question-text {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.5;
-    color: #1a1a1a;
-  }
-
-  .choice-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 16px;
-  }
-
+  .choice-buttons { display: flex; gap: 10px; margin-top: 16px; }
   .choice-btn {
-    flex: 1;
-    padding: 12px 8px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    background: #fafafa;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.15s;
-    color: #333;
+    flex: 1; padding: 12px 8px;
+    border: 2px solid #e0e0e0; border-radius: 8px;
+    background: #fafafa; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all 0.15s; color: #333;
   }
-
-  .choice-btn:hover, .choice-btn:focus {
-    border-color: #2c2c2c;
-    background: #2c2c2c;
-    color: #fff;
-    outline: none;
-  }
-
-  .choice-btn.yes {
-    border-color: #4a90d9;
-    color: #4a90d9;
-  }
+  .choice-btn.yes { border-color: #4a90d9; color: #4a90d9; }
   .choice-btn.yes:hover { background: #4a90d9; color: #fff; border-color: #4a90d9; }
-
-  .choice-btn.no {
-    border-color: #999;
-    color: #666;
-  }
-  .choice-btn.no:hover { background: #555; color: #fff; border-color: #555; }
+  .choice-btn.no  { border-color: #999; color: #666; }
+  .choice-btn.no:hover  { background: #555; color: #fff; border-color: #555; }
 
   /* Result Card */
   .result-card {
@@ -148,116 +111,90 @@
     box-shadow: 0 2px 12px rgba(0,0,0,0.1);
     display: none;
   }
-
   .result-card.show { display: block; }
 
   .result-type-badge {
     display: inline-block;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    padding: 3px 10px;
-    border-radius: 20px;
-    margin-bottom: 12px;
+    font-size: 11px; font-weight: 800;
+    letter-spacing: 0.1em; padding: 3px 10px;
+    border-radius: 20px; margin-bottom: 12px;
   }
-
-  .result-title {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 8px;
+  .result-title { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .result-logic {
+    font-size: 12px; color: #999; margin-bottom: 12px;
+    padding-bottom: 12px; border-bottom: 1px solid #f0f0f0;
   }
+  .result-reading { font-size: 15px; font-weight: 600; color: #333; margin-bottom: 8px; }
+  .result-desc { font-size: 13px; color: #555; line-height: 1.7; }
 
-  .result-reading {
-    font-size: 15px;
-    font-weight: 600;
-    color: #444;
-    margin-bottom: 10px;
+  .checklist {
+    margin-top: 14px;
+    background: #f8f8f8;
+    border-radius: 8px;
+    padding: 12px 14px;
   }
-
-  .result-desc {
-    font-size: 13px;
-    color: #666;
-    line-height: 1.65;
+  .checklist-title {
+    font-size: 11px; font-weight: 700; color: #888;
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
+  }
+  .checklist-item {
+    font-size: 12px; color: #555; line-height: 1.55;
+    padding: 5px 0 5px 18px; position: relative;
+    border-bottom: 1px solid #eee;
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .checklist-item::before {
+    content: '?'; position: absolute; left: 0;
+    color: #bbb; font-weight: 700; font-size: 12px;
   }
 
   .result-warning {
     margin-top: 14px;
     padding: 10px 12px;
     background: #fff8e1;
-    border-radius: 6px;
-    font-size: 12px;
-    color: #7a6000;
-    line-height: 1.5;
+    border-left: 3px solid #e8c84a;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px; color: #7a5800; line-height: 1.6;
   }
+  .result-examples { font-size: 11px; color: #bbb; margin-top: 10px; }
 
-  /* colors per type */
+  .restart-btn {
+    width: 100%; padding: 14px;
+    background: #2c2c2c; color: #fff;
+    border: none; border-radius: 10px;
+    font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s; margin-top: 16px;
+  }
+  .restart-btn:hover { background: #444; }
+
+  /* colors */
   .type-a { background: #e3f2fd; color: #1565c0; }
   .type-b { background: #f3e5f5; color: #6a1b9a; }
   .type-c { background: #fce4ec; color: #b71c1c; }
   .type-d { background: #e8f5e9; color: #2e7d32; }
   .type-e { background: #fff3e0; color: #e65100; }
 
-  .restart-btn {
-    width: 100%;
-    padding: 14px;
-    background: #2c2c2c;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin-top: 8px;
-  }
-
-  .restart-btn:hover { background: #444; }
-
-  /* progress dots */
-  .progress-dots {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 18px;
-  }
-
-  .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #ddd;
-    transition: background 0.2s;
-  }
-
-  .dot.done { background: #e8c84a; }
-  .dot.active { background: #2c2c2c; }
-
-  /* breadcrumb trail */
-  .trail {
-    margin-bottom: 16px;
-  }
-
-  .trail-item {
-    font-size: 12px;
-    color: #aaa;
-    margin-bottom: 4px;
-    display: flex;
-    gap: 6px;
-    align-items: flex-start;
-  }
-
-  .trail-item::before {
-    content: '✓';
-    color: #e8c84a;
-    flex-shrink: 0;
-    font-size: 11px;
-    margin-top: 1px;
-  }
-
-  /* === TYPES TAB === */
+  /* ===== TYPES TAB ===== */
   .types-container {
-    padding: 20px 16px 40px;
+    padding: 20px 16px 48px;
     max-width: 560px;
     margin: 0 auto;
+  }
+
+  .disguise-warning {
+    background: #2c2c2c;
+    color: #f5f4f0;
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .disguise-warning strong { color: #e8c84a; }
+  .disguise-warning .dw-title {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.08em; color: #e8c84a;
+    margin-bottom: 6px; text-transform: uppercase;
   }
 
   .type-card {
@@ -266,101 +203,60 @@
     padding: 16px 18px;
     margin-bottom: 12px;
     box-shadow: 0 1px 6px rgba(0,0,0,0.07);
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
   }
-
+  .type-card-header {
+    display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px;
+  }
   .type-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.05em;
-    flex-shrink: 0;
+    width: 38px; height: 38px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; letter-spacing: 0.05em; flex-shrink: 0;
+  }
+  .type-header-body { flex: 1; }
+  .type-name { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+  .type-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge {
+    display: inline-block; font-size: 10px;
+    padding: 2px 8px; border-radius: 10px; font-weight: 600;
+  }
+  .badge-read-slow   { background: #ffe0e0; color: #c0392b; }
+  .badge-read-fast   { background: #e0f5e0; color: #27ae60; }
+  .badge-read-mixed  { background: #e8eaf6; color: #3949ab; }
+  .badge-read-aware  { background: #fff8e1; color: #f57f17; }
+  .badge-logic       { background: #f5f5f5; color: #666; }
+
+  .type-desc { font-size: 12px; color: #666; line-height: 1.6; margin-bottom: 8px; }
+
+  .type-checklist { border-top: 1px solid #f0f0f0; padding-top: 8px; }
+  .type-checklist-title { font-size: 10px; color: #bbb; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 5px; text-transform: uppercase; }
+  .type-check-item {
+    font-size: 11px; color: #888; line-height: 1.5;
+    padding: 3px 0 3px 14px; position: relative;
+  }
+  .type-check-item::before { content: '›'; position: absolute; left: 0; color: #ccc; font-weight: 700; }
+
+  .type-examples { font-size: 11px; color: #bbb; margin-top: 6px; }
+
+  .type-alert {
+    margin-top: 10px; padding: 8px 10px;
+    background: #fff8e1; border-radius: 6px;
+    font-size: 11px; color: #7a5800; line-height: 1.5;
   }
 
-  .type-body {}
-
-  .type-name {
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 2px;
-  }
-
-  .type-reading-badge {
-    display: inline-block;
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-
-  .reading-slow { background: #ffe0e0; color: #c0392b; }
-  .reading-fast { background: #e0f5e0; color: #27ae60; }
-  .reading-mixed { background: #e8eaf6; color: #3949ab; }
-  .reading-aware { background: #fff8e1; color: #f57f17; }
-
-  .type-body-desc {
-    font-size: 12px;
-    color: #777;
-    line-height: 1.55;
-  }
-
-  .type-examples {
-    font-size: 11px;
-    color: #aaa;
-    margin-top: 4px;
-  }
-
-  .section-warning {
-    margin: 0 0 16px;
-    background: #fff8e1;
-    border-radius: 10px;
-    padding: 14px 16px;
-    font-size: 12px;
-    color: #7a5800;
-    line-height: 1.65;
-    border-left: 4px solid #e8c84a;
-  }
-
-  /* === INFO TAB === */
+  /* ===== INFO TAB ===== */
   .info-container {
-    padding: 20px 16px 40px;
+    padding: 20px 16px 48px;
     max-width: 560px;
     margin: 0 auto;
   }
-
   .info-block {
-    background: #fff;
-    border-radius: 10px;
-    padding: 18px;
-    margin-bottom: 14px;
+    background: #fff; border-radius: 10px;
+    padding: 18px; margin-bottom: 14px;
     box-shadow: 0 1px 6px rgba(0,0,0,0.07);
   }
-
-  .info-block h3 {
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: #1a1a1a;
-  }
-
-  .info-block p, .info-block li {
-    font-size: 13px;
-    color: #555;
-    line-height: 1.65;
-  }
-
-  .info-block a {
-    color: #4a90d9;
-    word-break: break-all;
-  }
+  .info-block h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: #1a1a1a; }
+  .info-block p  { font-size: 13px; color: #555; line-height: 1.65; }
+  .info-block a  { color: #4a90d9; word-break: break-all; }
 </style>
 </head>
 <body>
@@ -371,236 +267,347 @@
 </header>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="switchTab('flow')">🔍 診断する</button>
-  <button class="tab-btn" onclick="switchTab('types')">📚 タイプ一覧</button>
-  <button class="tab-btn" onclick="switchTab('info')">ℹ️ について</button>
+  <button class="tab-btn active" onclick="switchTab('flow', this)">🔍 診断する</button>
+  <button class="tab-btn"        onclick="switchTab('types', this)">📚 タイプ一覧</button>
+  <button class="tab-btn"        onclick="switchTab('info', this)">ℹ️ について</button>
 </div>
 
-<!-- ===== FLOW TAB ===== -->
+
+<!-- ============================= FLOW TAB ============================= -->
 <div class="tab-content active" id="tab-flow">
-  <div class="flow-container">
+<div class="flow-container">
 
-    <p class="flow-intro">読む前に、この本が「何をしようとしているか」を30秒で問いましょう。</p>
+  <p class="flow-intro">「この本は何をしようとしているか」を最初に問う。それだけで、読み方の精度が大きく変わる。</p>
 
-    <div id="progress-dots" class="progress-dots">
-      <div class="dot active" id="dot-0"></div>
-      <div class="dot" id="dot-1"></div>
-      <div class="dot" id="dot-2"></div>
-      <div class="dot" id="dot-3"></div>
-    </div>
-
-    <div id="trail" class="trail"></div>
-
-    <!-- Q0 -->
-    <div id="q0" class="question-card">
-      <div class="question-label">Question 1 / 3</div>
-      <div class="question-text">この本は、データや論理を使って何かを主張しているか？</div>
-      <div class="choice-buttons">
-        <button class="choice-btn yes" onclick="answer(0, 'yes')">Yes　している</button>
-        <button class="choice-btn no"  onclick="answer(0, 'no')">No　していない</button>
-      </div>
-    </div>
-
-    <!-- Q1 (Yes path from Q0) -->
-    <div id="q1" class="question-card" style="display:none">
-      <div class="question-label">Question 2 / 3</div>
-      <div class="question-text">その主張は検証可能か？<br><span style="font-size:13px;font-weight:400;color:#888">（実験・統計など客観的な方法で確かめられそうか）</span></div>
-      <div class="choice-buttons">
-        <button class="choice-btn yes" onclick="answer(1, 'yes')">Yes　検証できる</button>
-        <button class="choice-btn no"  onclick="answer(1, 'no')">No　検証しにくい</button>
-      </div>
-    </div>
-
-    <!-- Q2 (No path from Q0) -->
-    <div id="q2" class="question-card" style="display:none">
-      <div class="question-label">Question 2 / 3</div>
-      <div class="question-text">この本は、何かについて価値判断を含んでいるか？<br><span style="font-size:13px;font-weight:400;color:#888">（「○○は良い・悪い」「○○であるべき」など著者の評価がある）</span></div>
-      <div class="choice-buttons">
-        <button class="choice-btn yes" onclick="answer(2, 'yes')">Yes　含んでいる</button>
-        <button class="choice-btn no"  onclick="answer(2, 'no')">No　含んでいない</button>
-      </div>
-    </div>
-
-    <!-- Q3 (No/No path) -->
-    <div id="q3" class="question-card" style="display:none">
-      <div class="question-label">Question 3 / 3</div>
-      <div class="question-text">知識や事実の整理・説明が中心か？<br><span style="font-size:13px;font-weight:400;color:#888">（「教える」ことが主な目的か）</span></div>
-      <div class="choice-buttons">
-        <button class="choice-btn yes" onclick="answer(3, 'yes')">Yes　知識の整理が中心</button>
-        <button class="choice-btn no"  onclick="answer(3, 'no')">No　それよりも語りかけ</button>
-      </div>
-    </div>
-
-    <!-- Results -->
-    <div id="result-A" class="result-card">
-      <div class="result-type-badge type-a">TYPE A</div>
-      <div class="result-title">証明する本</div>
-      <div class="result-reading">📖 読み方：じっくり精読</div>
-      <div class="result-desc">論拠の一つひとつを追い、飛躍がないか検証しながら読む。「なぜそう言えるのか」を常に問いかけることが大切。</div>
-      <div class="result-desc" style="margin-top:8px;color:#aaa;font-size:12px">例：科学書、学術論文、統計分析書</div>
-      <div class="result-warning">⚠️ データを多用しながら特定の世界観を広めようとしている本も多い。「教える本」に見えても実は「評価する本」のことがある。読み進めて違和感を感じたら分類を見直そう。</div>
-      <button class="restart-btn" onclick="restart()">↩ もう一度診断する</button>
-    </div>
-
-    <div id="result-B" class="result-card">
-      <div class="result-type-badge type-b">TYPE B</div>
-      <div class="result-title">考え抜く本</div>
-      <div class="result-reading">📖 読み方：じっくり精読</div>
-      <div class="result-desc">著者の問いを自分の問いとして引き受け、自分なりの答えを持ちながら読む。答えを探すのではなく、思考を深めるために読む本。</div>
-      <div class="result-desc" style="margin-top:8px;color:#aaa;font-size:12px">例：哲学書、思想書</div>
-      <button class="restart-btn" onclick="restart()">↩ もう一度診断する</button>
-    </div>
-
-    <div id="result-C" class="result-card">
-      <div class="result-type-badge type-c">TYPE C</div>
-      <div class="result-title">評価する本</div>
-      <div class="result-reading">📖 読み方：立場を意識して精読</div>
-      <div class="result-desc">著者がどの立場から書いているかを先に把握し、その前提ごと検討する。「誰がどの立場でこう言っているか」を常に意識する。</div>
-      <div class="result-desc" style="margin-top:8px;color:#aaa;font-size:12px">例：社会批評、文芸批評</div>
-      <button class="restart-btn" onclick="restart()">↩ もう一度診断する</button>
-    </div>
-
-    <div id="result-D" class="result-card">
-      <div class="result-type-badge type-d">TYPE D</div>
-      <div class="result-title">教える本</div>
-      <div class="result-reading">📗 読み方：流し読み＋必要箇所を参照</div>
-      <div class="result-desc">全体構造をざっくり掴み、必要な部分に戻って深掘りする。最初から全部精読しなくていい。目次を地図として使おう。</div>
-      <div class="result-desc" style="margin-top:8px;color:#aaa;font-size:12px">例：教科書、入門書、専門書</div>
-      <div class="result-warning">⚠️ 「教える本」に見せかけて特定の世界観を広めようとしているベストセラーも多い。読み進めて「主張が強いな」と感じたらType Cとして再分類を。</div>
-      <button class="restart-btn" onclick="restart()">↩ もう一度診断する</button>
-    </div>
-
-    <div id="result-E" class="result-card">
-      <div class="result-type-badge type-e">TYPE E</div>
-      <div class="result-title">語りかける本</div>
-      <div class="result-reading">📘 読み方：流し読み</div>
-      <div class="result-desc">流れを止めず受け取る。著者の体験世界にまず入り込む読み方。分析より没入を優先しよう。</div>
-      <div class="result-desc" style="margin-top:8px;color:#aaa;font-size:12px">例：小説、自伝、エッセイ</div>
-      <button class="restart-btn" onclick="restart()">↩ もう一度診断する</button>
-    </div>
-
+  <div id="progress-dots" class="progress-dots">
+    <div class="dot active" id="dot-0"></div>
+    <div class="dot" id="dot-1"></div>
+    <div class="dot" id="dot-2"></div>
+    <div class="dot" id="dot-3"></div>
   </div>
+
+  <div id="trail" class="trail"></div>
+
+  <!-- Q0 -->
+  <div id="q0" class="question-card">
+    <div class="question-label">Question 1 / 3</div>
+    <div class="question-text">この本は、データや論理を根拠に何かを主張しているか？</div>
+    <div class="question-hint">目次・まえがきを見て「仮説を証明しようとしている雰囲気」があるか</div>
+    <div class="choice-buttons">
+      <button class="choice-btn yes" onclick="answer(0,'yes')">Yes　している</button>
+      <button class="choice-btn no"  onclick="answer(0,'no')">No　していない</button>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div id="q1" class="question-card" style="display:none">
+    <div class="question-label">Question 2 / 3</div>
+    <div class="question-text">その主張は、客観的な方法で反証できるか？</div>
+    <div class="question-hint">実験・統計・再現性など、第三者が検証できる論拠があるか。「著者の解釈」だけで成り立っていないか</div>
+    <div class="choice-buttons">
+      <button class="choice-btn yes" onclick="answer(1,'yes')">Yes　反証できる</button>
+      <button class="choice-btn no"  onclick="answer(1,'no')">No　反証しにくい</button>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div id="q2" class="question-card" style="display:none">
+    <div class="question-label">Question 2 / 3</div>
+    <div class="question-text">著者の価値観や立場からの評価・判断が含まれているか？</div>
+    <div class="question-hint">「○○は正しい／間違い」「○○であるべき」という著者の価値判断が前面に出ているか</div>
+    <div class="choice-buttons">
+      <button class="choice-btn yes" onclick="answer(2,'yes')">Yes　含まれている</button>
+      <button class="choice-btn no"  onclick="answer(2,'no')">No　含まれていない</button>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div id="q3" class="question-card" style="display:none">
+    <div class="question-label">Question 3 / 3</div>
+    <div class="question-text">知識や情報を整理・体系化して伝えることが主な目的か？</div>
+    <div class="question-hint">著者の主張よりも「知識の地図を渡すこと」が目的に見えるか</div>
+    <div class="choice-buttons">
+      <button class="choice-btn yes" onclick="answer(3,'yes')">Yes　知識の整理が中心</button>
+      <button class="choice-btn no"  onclick="answer(3,'no')">No　体験・物語を伝えている</button>
+    </div>
+  </div>
+
+  <!-- ===== RESULT A ===== -->
+  <div id="result-A" class="result-card">
+    <div class="result-type-badge type-a">TYPE A</div>
+    <div class="result-title">証明する本</div>
+    <div class="result-logic">論理の型：帰納・演繹・数式的な論証</div>
+    <div class="result-reading">📖 読み方：一文一文の論証を追う精読</div>
+    <div class="result-desc">
+      著者が「なぜそう言えるか」を論証しようとしている本。論拠の一つひとつを追い、飛躍や矛盾がないかを確かめながら読む。「面白い主張だ」と思っても、それが証明されているかどうかは別問題として扱う。
+    </div>
+    <div class="checklist">
+      <div class="checklist-title">読みながら問うこと</div>
+      <div class="checklist-item">この論拠は反証できるか？反証例を著者はどう扱っているか？</div>
+      <div class="checklist-item">データの選び方に恣意性はないか？都合の良いデータだけを使っていないか？</div>
+      <div class="checklist-item">前の論点から次の論点への飛躍はないか？</div>
+      <div class="checklist-item">「相関」を「因果」として扱っていないか？</div>
+    </div>
+    <div class="result-warning">
+      ⚠️ <strong>見せかけ型に注意：</strong>データや統計を多用しながら、実は著者の世界観を広めようとしているType Cの本が多い（ベストセラー教養書に頻出）。読み進めて「主張が強い割に反証を扱っていない」と感じたら、Type Cとして再診断を。
+    </div>
+    <div class="result-examples">例：科学書、学術論文、統計分析書</div>
+    <button class="restart-btn" onclick="restart()">↩ もう一度診断する</button>
+  </div>
+
+  <!-- ===== RESULT B ===== -->
+  <div id="result-B" class="result-card">
+    <div class="result-type-badge type-b">TYPE B</div>
+    <div class="result-title">考え抜く本</div>
+    <div class="result-logic">論理の型：弁証法的・止揚（アウフヘーベン）</div>
+    <div class="result-reading">📖 読み方：自分の仮説を持ちながら読む精読</div>
+    <div class="result-desc">
+      著者が「答えを出す」のではなく、「問いを深める」ことを目的にしている本。答えを探しながら読むのではなく、著者の問いを自分の問いとして引き受け、自分なりの立場を持ちながら読む。著者と対話するように読むことが大切。
+    </div>
+    <div class="checklist">
+      <div class="checklist-title">読みながら問うこと</div>
+      <div class="checklist-item">著者はどんな問いを立てているか？その問いは正しく設定されているか？</div>
+      <div class="checklist-item">自分はこの問いにどう答えるか？著者とどこで意見が分かれるか？</div>
+      <div class="checklist-item">著者が乗り越えようとしている対立構造は何か？</div>
+      <div class="checklist-item">論証が難解な場合、「なぜこの言い方をするのか」という著者の意図を探る</div>
+    </div>
+    <div class="result-examples">例：哲学書、思想書、倫理学書</div>
+    <button class="restart-btn" onclick="restart()">↩ もう一度診断する</button>
+  </div>
+
+  <!-- ===== RESULT C ===== -->
+  <div id="result-C" class="result-card">
+    <div class="result-type-badge type-c">TYPE C</div>
+    <div class="result-title">評価する本</div>
+    <div class="result-logic">論理の型：規範的・社会的共感の論理</div>
+    <div class="result-reading">📖 読み方：著者の立場を先に把握してから精読</div>
+    <div class="result-desc">
+      著者がある立場・価値観から対象を評価・批判している本。読む前にまず「著者はどのイデオロギー・立場から書いているか」を把握する。その前提ごと検討する姿勢が必要で、著者の立場を知らずに内容だけ読んでも正確には理解できない。
+    </div>
+    <div class="checklist">
+      <div class="checklist-title">読みながら問うこと</div>
+      <div class="checklist-item">著者の立場・イデオロギーは何か？（経済的合理性か、共同体的価値観か、など）</div>
+      <div class="checklist-item">その立場から見えにくくなっているものは何か？</div>
+      <div class="checklist-item">著者が「良い／悪い」と判断する基準は何か？その基準自体は妥当か？</div>
+      <div class="checklist-item">自分はどの立場にいるか？著者と同じ立場なら共感しやすいが、それは論証の妥当性とは別問題</div>
+    </div>
+    <div class="result-examples">例：社会批評、文芸批評、思想・政治評論</div>
+    <button class="restart-btn" onclick="restart()">↩ もう一度診断する</button>
+  </div>
+
+  <!-- ===== RESULT D ===== -->
+  <div id="result-D" class="result-card">
+    <div class="result-type-badge type-d">TYPE D</div>
+    <div class="result-title">教える本</div>
+    <div class="result-logic">論理の型：帰納的・事実の列挙・体系化</div>
+    <div class="result-reading">📗 読み方：全体構造を掴んでから必要箇所を深掘り</div>
+    <div class="result-desc">
+      知識や情報を体系的に整理して伝えることが目的の本。最初から全部精読しなくていい。目次を地図として使い、全体の構造をざっくり掴んでから、必要な部分だけ戻って深掘りする。
+    </div>
+    <div class="checklist">
+      <div class="checklist-title">読みながら分けること</div>
+      <div class="checklist-item">これは「事実・データ」か「著者の解釈・見解」か？</div>
+      <div class="checklist-item">知識の整理なのか、特定の結論に誘導しようとしているのか？</div>
+      <div class="checklist-item">引用・参照元は信頼できるか？一次情報か二次情報か？</div>
+    </div>
+    <div class="result-warning">
+      ⚠️ <strong>最も見分けにくい見せかけ型：</strong>「教える本」の形式をとりながら、特定の世界観や価値観を読者に植え付けようとしているType Cの本が多い（ビジネス書・教養書のベストセラーに頻出）。「なんとなく納得した」で終わるなら、著者に誘導されている可能性がある。
+    </div>
+    <div class="result-examples">例：教科書、入門書、専門書、ハンドブック</div>
+    <button class="restart-btn" onclick="restart()">↩ もう一度診断する</button>
+  </div>
+
+  <!-- ===== RESULT E ===== -->
+  <div id="result-E" class="result-card">
+    <div class="result-type-badge type-e">TYPE E</div>
+    <div class="result-title">語りかける本</div>
+    <div class="result-logic">論理の型：感情・共感・ナラティブ</div>
+    <div class="result-reading">📘 読み方：流れを止めずに没入する</div>
+    <div class="result-desc">
+      著者の経験・物語を通じて読者に何かを感じさせることが目的の本。分析より没入を優先する。途中で「これはこういう意味だ」と立ち止まって考えない。読み終えてから、体験した世界を振り返る。
+    </div>
+    <div class="checklist">
+      <div class="checklist-title">読み終えてから問うこと</div>
+      <div class="checklist-item">著者の体験から、何が普遍的に言えるか？</div>
+      <div class="checklist-item">自分の経験・感覚とどこが重なり、どこが違ったか？</div>
+      <div class="checklist-item">著者が伝えたかったことの核心は何か？</div>
+    </div>
+    <div class="result-examples">例：小説、自伝、エッセイ、ノンフィクション</div>
+    <button class="restart-btn" onclick="restart()">↩ もう一度診断する</button>
+  </div>
+
+</div>
 </div>
 
-<!-- ===== TYPES TAB ===== -->
+
+<!-- ============================= TYPES TAB ============================= -->
 <div class="tab-content" id="tab-types">
-  <div class="types-container">
+<div class="types-container">
 
-    <div class="section-warning">
-      ⚠️ <strong>注意：</strong>データを多用しながら「教える本」や「証明する本」に見せかけて、実は特定の世界観を広めようとしている本がある（ベストセラーの教養書・ビジネス書に多い）。読み始めて「思っていたタイプと違う」と感じたら、分類を見直すこと。
-    </div>
+  <div class="disguise-warning">
+    <div class="dw-title">⚠ 見せかけ型に注意</div>
+    データや統計を多用しながら「証明する本（A）」や「教える本（D）」に見えて、実は特定の価値観・世界観を読者に広めようとしている本がある。ベストセラーの教養書・ビジネス書に特に多い。<br>
+    読み進めて<strong>「反証を扱っていない」「主張が強い」</strong>と感じたら、Type Cとして読み直すこと。
+  </div>
 
-    <div class="type-card">
-      <div class="type-icon type-a" style="background:#e3f2fd;color:#1565c0;">A</div>
-      <div class="type-body">
+  <!-- TYPE A -->
+  <div class="type-card">
+    <div class="type-card-header">
+      <div class="type-icon" style="background:#e3f2fd;color:#1565c0;">A</div>
+      <div class="type-header-body">
         <div class="type-name">証明する本</div>
-        <span class="type-reading-badge reading-slow">精読</span>
-        <div class="type-body-desc">データや論理で仮説の正しさを示そうとしている。論拠の飛躍がないか検証しながら読む。</div>
-        <div class="type-examples">例：科学書、学術論文、統計分析書</div>
+        <div class="type-badges">
+          <span class="badge badge-read-slow">精読</span>
+          <span class="badge badge-logic">帰納・演繹・数式的</span>
+        </div>
       </div>
     </div>
+    <div class="type-desc">仮説の正しさをデータ・論理で示そうとしている本。論証の飛躍・反証の扱いを丁寧に確認しながら読む。</div>
+    <div class="type-checklist">
+      <div class="type-checklist-title">確認ポイント</div>
+      <div class="type-check-item">反証可能か？反証例をどう扱っているか？</div>
+      <div class="type-check-item">相関を因果として扱っていないか？</div>
+      <div class="type-check-item">データの選び方に恣意性はないか？</div>
+    </div>
+    <div class="type-examples">例：科学書、学術論文、統計分析書</div>
+  </div>
 
-    <div class="type-card">
-      <div class="type-icon type-b" style="background:#f3e5f5;color:#6a1b9a;">B</div>
-      <div class="type-body">
+  <!-- TYPE B -->
+  <div class="type-card">
+    <div class="type-card-header">
+      <div class="type-icon" style="background:#f3e5f5;color:#6a1b9a;">B</div>
+      <div class="type-header-body">
         <div class="type-name">考え抜く本</div>
-        <span class="type-reading-badge reading-slow">精読</span>
-        <div class="type-body-desc">答えの出ない問いに対して思考を深めようとしている。著者の問いを自分の問いとして引き受けて読む。</div>
-        <div class="type-examples">例：哲学書、思想書</div>
+        <div class="type-badges">
+          <span class="badge badge-read-slow">精読</span>
+          <span class="badge badge-logic">弁証法的・止揚</span>
+        </div>
       </div>
     </div>
+    <div class="type-desc">答えの出ない問いに対して思考を深めようとしている本。自分の仮説を持ちながら著者と対話するように読む。</div>
+    <div class="type-checklist">
+      <div class="type-checklist-title">確認ポイント</div>
+      <div class="type-check-item">著者はどんな問いを立てているか？</div>
+      <div class="type-check-item">自分はその問いにどう答えるか？</div>
+      <div class="type-check-item">著者が乗り越えようとしている対立は何か？</div>
+    </div>
+    <div class="type-examples">例：哲学書、思想書</div>
+  </div>
 
-    <div class="type-card">
-      <div class="type-icon type-c" style="background:#fce4ec;color:#b71c1c;">C</div>
-      <div class="type-body">
+  <!-- TYPE C -->
+  <div class="type-card">
+    <div class="type-card-header">
+      <div class="type-icon" style="background:#fce4ec;color:#b71c1c;">C</div>
+      <div class="type-header-body">
         <div class="type-name">評価する本</div>
-        <span class="type-reading-badge reading-aware">立場を意識して精読</span>
-        <div class="type-body-desc">著者の立場から価値判断を提示している。どの立場から書いているかを先に把握して読む。</div>
-        <div class="type-examples">例：社会批評、文芸批評</div>
+        <div class="type-badges">
+          <span class="badge badge-read-aware">立場を把握してから精読</span>
+          <span class="badge badge-logic">規範的・共感の論理</span>
+        </div>
       </div>
     </div>
+    <div class="type-desc">著者の立場・価値観から対象を評価・批判している本。読む前に著者のイデオロギーや立場を把握し、その前提ごと検討する。</div>
+    <div class="type-checklist">
+      <div class="type-checklist-title">確認ポイント</div>
+      <div class="type-check-item">著者の立場・イデオロギーは何か？</div>
+      <div class="type-check-item">その立場から見えにくくなっているものは何か？</div>
+      <div class="type-check-item">良い／悪いの判断基準は何か？その基準自体は妥当か？</div>
+    </div>
+    <div class="type-examples">例：社会批評、文芸批評、思想・政治評論</div>
+  </div>
 
-    <div class="type-card">
-      <div class="type-icon type-d" style="background:#e8f5e9;color:#2e7d32;">D</div>
-      <div class="type-body">
+  <!-- TYPE D -->
+  <div class="type-card">
+    <div class="type-card-header">
+      <div class="type-icon" style="background:#e8f5e9;color:#2e7d32;">D</div>
+      <div class="type-header-body">
         <div class="type-name">教える本</div>
-        <span class="type-reading-badge reading-mixed">流し読み＋参照</span>
-        <div class="type-body-desc">知識や情報を体系的に整理して伝えている。全体をざっくり掴み、必要な部分に戻って深掘りする。</div>
-        <div class="type-examples">例：教科書、入門書、専門書</div>
+        <div class="type-badges">
+          <span class="badge badge-read-mixed">流し読み＋参照</span>
+          <span class="badge badge-logic">帰納的・体系化</span>
+        </div>
       </div>
     </div>
+    <div class="type-desc">知識・情報を体系的に整理して伝えることが主な目的の本。目次を地図にして全体を掴み、必要な部分を深掘りする。</div>
+    <div class="type-checklist">
+      <div class="type-checklist-title">確認ポイント</div>
+      <div class="type-check-item">事実・データと著者の解釈・見解を分けて読む</div>
+      <div class="type-check-item">「なんとなく納得」で終わっていないか？</div>
+    </div>
+    <div class="type-alert">⚠️ Type A・Dに見せかけたType Cが最も多い。「教えている」ようで実は誘導しているケースに注意。</div>
+    <div class="type-examples">例：教科書、入門書、専門書</div>
+  </div>
 
-    <div class="type-card">
-      <div class="type-icon type-e" style="background:#fff3e0;color:#e65100;">E</div>
-      <div class="type-body">
+  <!-- TYPE E -->
+  <div class="type-card">
+    <div class="type-card-header">
+      <div class="type-icon" style="background:#fff3e0;color:#e65100;">E</div>
+      <div class="type-header-body">
         <div class="type-name">語りかける本</div>
-        <span class="type-reading-badge reading-fast">流し読み</span>
-        <div class="type-body-desc">著者の経験や物語を通じて読者に何かを感じさせようとしている。流れを止めず没入して読む。</div>
-        <div class="type-examples">例：小説、自伝、エッセイ</div>
+        <div class="type-badges">
+          <span class="badge badge-read-fast">流し読み・没入</span>
+          <span class="badge badge-logic">感情・ナラティブ</span>
+        </div>
       </div>
     </div>
-
+    <div class="type-desc">著者の経験・物語を通じて何かを感じさせようとしている本。途中で立ち止まらず、流れに乗って読む。読後に振り返る。</div>
+    <div class="type-checklist">
+      <div class="type-checklist-title">読後に問うこと</div>
+      <div class="type-check-item">著者の体験から何が普遍的に言えるか？</div>
+      <div class="type-check-item">自分の経験とどこが重なり、どこが違ったか？</div>
+    </div>
+    <div class="type-examples">例：小説、自伝、エッセイ、ノンフィクション</div>
   </div>
+
+</div>
 </div>
 
-<!-- ===== INFO TAB ===== -->
+
+<!-- ============================= INFO TAB ============================= -->
 <div class="tab-content" id="tab-info">
-  <div class="info-container">
-    <div class="info-block">
-      <h3>このガイドについて</h3>
-      <p>オードリー・タン氏の読書論をベースに考案した読み方の分類フレームワークです。本を読む前に「この本は何をしようとしているか」を問うことで、読み方の精度が大きく変わります。</p>
-    </div>
-    <div class="info-block">
-      <h3>参考記事</h3>
-      <p>東洋経済オンライン<br><a href="https://toyokeizai.net/articles/-/510676" target="_blank">https://toyokeizai.net/articles/-/510676</a></p>
-    </div>
-    <div class="info-block">
-      <h3>使い方のコツ</h3>
-      <p>「診断する」タブで3つの問いに答えると、その本のタイプと推奨読み方が表示されます。読み進めて「思っていたタイプと違う」と感じたら、遠慮なく再診断してください。</p>
-    </div>
+<div class="info-container">
+  <div class="info-block">
+    <h3>このガイドについて</h3>
+    <p>オードリー・タン氏の読書論を起点に、本の性格・論理の型・読み手の立場の3軸から読み方を選ぶフレームワークです。本を読む前に「この本は何をしようとしているか」を問うことで、理解の精度が変わります。</p>
+  </div>
+  <div class="info-block">
+    <h3>参考記事</h3>
+    <p>東洋経済オンライン（オードリー・タン）<br><a href="https://toyokeizai.net/articles/-/510676" target="_blank">https://toyokeizai.net/articles/-/510676</a></p>
+  </div>
+  <div class="info-block">
+    <h3>使い方</h3>
+    <p>「診断する」タブで3問に答えると、タイプと読み方が表示されます。読み進めて「思っていたタイプと違う」と感じたら、再診断してください。タイプ分類は固定ではなく、読みながら修正するものです。</p>
   </div>
 </div>
+</div>
+
 
 <script>
-  // State
   var step = 0;
   var trail = [];
-
   var questions = {
-    q0: { text: 'データや論理で何かを主張しているか？', yes: 'q1', no: 'q2' },
-    q1: { text: 'その主張は検証可能か？',             yes: 'A',  no: 'B'  },
-    q2: { text: '価値判断を含んでいるか？',           yes: 'C',  no: 'q3' },
-    q3: { text: '知識・事実の整理が中心か？',         yes: 'D',  no: 'E'  },
+    q0: { text: 'データ・論理で主張しているか？', yes: 'q1', no: 'q2' },
+    q1: { text: 'その主張は反証できるか？',       yes: 'A',  no: 'B'  },
+    q2: { text: '著者の価値判断が含まれるか？',   yes: 'C',  no: 'q3' },
+    q3: { text: '知識の整理・体系化が中心か？',   yes: 'D',  no: 'E'  },
   };
-
-  var currentQ = 'q0';
 
   function answer(qNum, choice) {
     var qKey = 'q' + qNum;
     var q = questions[qKey];
-    var choiceLabel = (choice === 'yes') ? 'Yes' : 'No';
-
-    // Record trail
-    trail.push(q.text + ' → ' + choiceLabel);
+    trail.push(q.text + '　→　' + (choice === 'yes' ? 'Yes' : 'No'));
     renderTrail();
 
-    // Next
-    var next = (choice === 'yes') ? q.yes : q.no;
-
-    // Hide current
     document.getElementById(qKey).style.display = 'none';
-
     step++;
     updateDots(step);
 
+    var next = choice === 'yes' ? q.yes : q.no;
     if (next.startsWith('q')) {
       document.getElementById(next).style.display = 'block';
-      currentQ = next;
     } else {
-      // Show result
-      var r = document.getElementById('result-' + next);
-      r.classList.add('show');
-      updateDots(4); // all done
+      document.getElementById('result-' + next).classList.add('show');
+      updateDots(4);
     }
   }
 
@@ -618,43 +625,26 @@
   function updateDots(n) {
     for (var i = 0; i <= 3; i++) {
       var d = document.getElementById('dot-' + i);
-      if (i < n) d.className = 'dot done';
-      else if (i === n) d.className = 'dot active';
-      else d.className = 'dot';
+      d.className = 'dot' + (i < n ? ' done' : i === n ? ' active' : '');
     }
   }
 
   function restart() {
-    // Reset state
-    step = 0;
-    trail = [];
-    currentQ = 'q0';
+    step = 0; trail = [];
     renderTrail();
     updateDots(0);
-
-    // Show q0, hide others
     ['q0','q1','q2','q3'].forEach(function(q) {
-      var el = document.getElementById(q);
-      el.style.display = (q === 'q0') ? 'block' : 'none';
+      document.getElementById(q).style.display = q === 'q0' ? 'block' : 'none';
     });
-
-    // Hide all results
     ['A','B','C','D','E'].forEach(function(r) {
       document.getElementById('result-' + r).classList.remove('show');
     });
   }
 
-  function switchTab(tab) {
-    // Update tab buttons
-    document.querySelectorAll('.tab-btn').forEach(function(btn, i) {
-      btn.classList.remove('active');
-    });
-    event.currentTarget.classList.add('active');
-
-    // Show correct content
-    document.querySelectorAll('.tab-content').forEach(function(c) {
-      c.classList.remove('active');
-    });
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
     document.getElementById('tab-' + tab).classList.add('active');
   }
 </script>
